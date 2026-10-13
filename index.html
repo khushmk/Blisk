@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prototipos de gestión · Colegio, clínica, veterinaria y taller</title>
+  <meta name="description" content="Cuatro prototipos web funcionales hechos con HTML, CSS y JavaScript.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --fondo: #F1F2F4;
+      --papel: #FFFFFF;
+      --tinta: #16181D;
+      --suave: #5B616B;
+      --linea: #DADDE2;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--fondo);
+      color: var(--tinta);
+      font-family: 'Albert Sans', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .contenedor { width: min(100% - 2rem, 72rem); margin: 0 auto; }
+
+    header { padding: 4.5rem 0 2.5rem; }
+
+    .etiqueta-proyecto {
+      display: inline-block;
+      padding: 0.3rem 0.75rem;
+      border: 1px solid var(--linea);
+      border-radius: 999px;
+      background: var(--papel);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--suave);
+    }
+
+    h1 {
+      margin: 1.25rem 0 0;
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: clamp(2.3rem, 6vw, 4rem);
+      line-height: 1.02;
+      font-weight: 700;
+      max-width: 15ch;
+    }
+
+    .bajada { max-width: 58ch; margin: 1.25rem 0 0; font-size: 1.1rem; line-height: 1.6; color: var(--suave); }
+
+    .grilla { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 32rem), 1fr)); padding-bottom: 3rem; }
+
+    .sistema {
+      display: flex;
+      flex-direction: column;
+      background: var(--papel);
+      border: 1px solid var(--linea);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 1px 2px rgba(22, 24, 29, 0.05), 0 20px 40px -28px rgba(22, 24, 29, 0.35);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .sistema:hover { transform: translateY(-4px); box-shadow: 0 1px 2px rgba(22, 24, 29, 0.05), 0 30px 50px -28px rgba(22, 24, 29, 0.5); }
+
+    .captura { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: var(--color); }
+    .captura img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; transition: transform 0.6s ease; }
+    .sistema:hover .captura img { transform: scale(1.03); }
+
+    .numero {
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+      box-shadow: 0 6px 16px -6px rgba(0, 0, 0, 0.5);
+      padding: 0.35rem 0.7rem;
+      border-radius: 8px;
+      background: var(--color);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.8rem;
+    }
+
+    .cuerpo { display: flex; flex-direction: column; gap: 0.75rem; padding: 1.5rem; flex: 1; }
+    .cuerpo h2 { margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 1.6rem; line-height: 1.15; }
+    .cuerpo p { margin: 0; color: var(--suave); line-height: 1.55; }
+
+    .modulos { display: flex; flex-wrap: wrap; gap: 0.4rem; list-style: none; margin: 0.25rem 0 0; padding: 0; }
+    .modulos li { padding: 0.25rem 0.6rem; border-radius: 6px; background: var(--fondo); font-size: 0.8rem; font-weight: 600; color: var(--tinta); }
+
+    .pie-tarjeta { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--linea); }
+    .paleta { display: flex; gap: 0.3rem; }
+    .paleta span { width: 1.1rem; height: 1.1rem; border-radius: 999px; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1); }
+
+    .boton {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.15rem;
+      border-radius: 10px;
+      background: var(--color);
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      transition: filter 0.2s ease, transform 0.2s ease;
+    }
+
+    .boton:hover { filter: brightness(1.12); transform: translateX(2px); }
+    .boton:focus-visible { outline: 3px solid var(--tinta); outline-offset: 3px; }
+
+    footer { padding: 2rem 0 3.5rem; border-top: 1px solid var(--linea); color: var(--suave); font-size: 0.9rem; line-height: 1.6; }
+    footer strong { color: var(--tinta); }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="contenedor">
+    <span class="etiqueta-proyecto">Proyecto final · prototipos web</span>
+    <h1>Cuatro sistemas de gestión, cuatro oficios</h1>
+    <p class="bajada">Prototipos funcionales que se usan directamente en el navegador, en computador o celular. Cada uno guarda sus datos en el mismo dispositivo, así que puedes probar todo sin miedo: hay un botón para restablecer los datos de ejemplo.</p>
+  </header>
+
+  <main class="contenedor grilla">
+    <article class="sistema" style="--color:#14213D">
+      <div class="captura"><span class="numero">Sistema 1</span><img src="capturas/colegio.jpg" alt="Panel del profesor en el Aula Virtual del Colegio San Andrés" loading="lazy"></div>
+      <div class="cuerpo">
+        <h2>Aula Virtual · Colegio San Andrés</h2>
+        <p>Notas con promedio ponderado, tareas con entrega y corrección, asistencia diaria, anotaciones, mensajería y anuncios. Tres perfiles: profesor, alumno y apoderado.</p>
+        <ul class="modulos"><li>Libro de notas</li><li>Tareas</li><li>Asistencia</li><li>Anotaciones</li><li>Mensajería</li><li>Anuncios</li></ul>
+        <div class="pie-tarjeta">
+          <span class="paleta" aria-label="Paleta: azul tinta, mostaza y gris cálido"><span style="background:#14213D"></span><span style="background:#D4A22B"></span><span style="background:#ECE9E3"></span></span>
+          <a class="boton" href="colegio/">Abrir prototipo</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="sistema" style="--color:#0D3A37">
+      <div class="captura"><span class="numero">Sistema 2</span><img src="capturas/clinica.jpg" alt="Odontograma interactivo de la clínica dental" loading="lazy"></div>
+      <div class="cuerpo">
+        <h2>Clínica médica y dental</h2>
+        <p>Agenda semanal por profesional, ficha clínica dinámica, odontograma, exámenes con archivos, inventario, presupuestos imprimibles y finanzas con gráficos.</p>
+        <ul class="modulos"><li>Agenda</li><li>Ficha dinámica</li><li>Odontograma</li><li>Exámenes</li><li>Presupuestos</li><li>Finanzas</li></ul>
+        <div class="pie-tarjeta">
+          <span class="paleta" aria-label="Paleta: verde menta oscuro, esmeralda y violeta"><span style="background:#0D3A37"></span><span style="background:#0F916A"></span><span style="background:#6A5ACD"></span></span>
+          <a class="boton" href="clinica/">Abrir prototipo</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="sistema" style="--color:#BE643C">
+      <div class="captura"><span class="numero">Sistema 3</span><img src="capturas/veterinaria.jpg" alt="Panel de la Veterinaria Patitas del Sur" loading="lazy"></div>
+      <div class="cuerpo">
+        <h2>Veterinaria Patitas del Sur</h2>
+        <p>Mascotas con su tutor, carnet de vacunas con refuerzos automáticos, agenda, ficha clínica veterinaria, inventario con venta de productos y finanzas.</p>
+        <ul class="modulos"><li>Carnet de vacunas</li><li>Agenda</li><li>Ficha</li><li>Inventario</li><li>Presupuestos</li><li>Finanzas</li></ul>
+        <div class="pie-tarjeta">
+          <span class="paleta" aria-label="Paleta: marrón, terracota y verde oliva"><span style="background:#4A3426"></span><span style="background:#BE643C"></span><span style="background:#687838"></span></span>
+          <a class="boton" href="veterinaria/">Abrir prototipo</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="sistema" style="--color:#E5560A">
+      <div class="captura"><span class="numero">Sistema 4</span><img src="capturas/taller.jpg" alt="Tablero kanban de órdenes de trabajo del taller Torque Sur" loading="lazy"></div>
+      <div class="cuerpo">
+        <h2>Taller mecánico Torque Sur</h2>
+        <p>Órdenes de trabajo en tablero kanban, agenda por bahías, clientes y vehículos, boletas, facturas y presupuestos, compras a proveedores y newsletter.</p>
+        <ul class="modulos"><li>Órdenes de trabajo</li><li>Agenda</li><li>Clientes</li><li>Boletas y facturas</li><li>Compras</li><li>Newsletter</li></ul>
+        <div class="pie-tarjeta">
+          <span class="paleta" aria-label="Paleta: antracita, naranja y amarillo de advertencia"><span style="background:#121417"></span><span style="background:#FF6B1A"></span><span style="background:#FFC21A"></span></span>
+          <a class="boton" href="taller/">Abrir prototipo</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="contenedor">
+    <p><strong>Cómo están hechos:</strong> HTML5, CSS3 con Tailwind CSS (vía CDN) y JavaScript puro, sin servidor ni base de datos. Los datos se guardan en el navegador con <em>localStorage</em>.</p>
+    <p>Son prototipos para demostrar funcionalidades: las boletas y facturas no tienen validez tributaria y el newsletter simula el envío.</p>
+  </footer>
+</body>
+</html>
